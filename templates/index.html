@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>whatsmytrash</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Trash_Can.svg/480px-Trash_Can.svg.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="preload"
+      href="Mona-Sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/M%C3%BClltonne_%28Dustbin%29.png/640px-M%C3%BClltonne_%28Dustbin%29.png"
+            alt="Brand Image"
+            height="30"
+            class="d-inline-block align-top"
+          />
+          <span class="ms-0"><b>whatsmytrash</b></span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#why"><strong>why?</strong></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://github.com/ayush-that/IOSC_whatsmytrash"
+                ><strong>source</strong></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h1 class="display-5 mb-3 guide-title">what's your trash??? 💀💩</h1>
+          <p class="lead">
+            <strong
+              ><small
+                ><small>
+                  Do you want to know if your garbage is organic or recyclable?
+                  Take a picture and let's find out together!<br />क्या आप जानना
+                  चाहते हैं कि आपका कचरा जैविक है या पुनर्चक्रण योग्य? एक तस्वीर
+                  लें और आइए मिलकर पता लगाएं!</small
+                ></small
+              ></strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Garbage_dump_site.svg/640px-Garbage_dump_site.svg.png"
+        class="img-fluid"
+        alt="Responsive image"
+      />
+    </div>
+
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-3">
+                    <p class="lead"></p>
+                    <form
+                      method="post"
+                      action="/"
+                      enctype="multipart/form-data"
+                    >
+                      <dl>
+                        <p>
+                          <input
+                            type="file"
+                            name="file"
+                            autocomplete="off"
+                            required
+                            onchange="loadFile(event)"
+                          />
+                        </p>
+                      </dl>
+                      <p><img id="output" width="200" /></p>
+                      <p>
+                        <input
+                          type="submit"
+                          class="btn btn-primary"
+                          value="Submit"
+                          style="color: black; background-color: white"
+                        />
+                      </p>
+                    </form>
+                  </div>
+                  <div class="col-sm-3">
+                    <p></p>
+                    <div id="results">
+                      <h10
+                        style="
+                          text-align: center;
+                          color: white;
+                          padding-top: 30px;
+                          padding-bottom: 30px;
+                        "
+                      >
+                        <span>
+                          {% with messages = get_flashed_messages() %} {% if
+                          messages %} Waste Category: {{ messages[0] }}
+                          <br />
+                          Probability: {{ (messages[1]|float*100) }}%
+                          <img
+                            src="{{ url_for('static', filename=messages[2])}}"
+                            width="200"
+                          />
+                          {% endif %} {% endwith %}
+                        </span>
+                      </h10>
+                    </div>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h1 id="why" class="display-5 mb-3 guide-title">
+            Why Should I know? 🤬🖕
+          </h1>
+          <p class="lead">
+            <strong
+              ><small
+                ><small>
+                  It's crucial to know which trash can get recycled and which is
+                  straight-up organic.
+                  <br />यह जानना महत्वपूर्ण है कि कौन सा कचरा मिल सकता है
+                  पुनर्चक्रित और जो सीधे-सीधे जैविक है।</small
+                ></small
+              ></strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/024/635/817/small/unhygienic-garbage-heap-pollutes-environment-recycling-symbol-offers-hope-generated-by-ai-photo.jpg"
+              class="card-img-top"
+              alt="Image 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <strong>Waste Reduction</strong>
+              </h5>
+              <p class="card-text">
+                <small
+                  >Recycling minimizes waste accumulation in landfills,
+                  preventing overflow of garbage.</small
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img
+              src="https://debashribanerjee.files.wordpress.com/2016/10/clean.jpg"
+              class="card-img-top"
+              alt="Image 2"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <strong>Pollution Prevention</strong>
+              </h5>
+              <p class="card-text">
+                <small
+                  >By keeping harmful chemicals out of soil, water, and air,
+                  recycling acts as a shield.</small
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img
+              src="https://aeronomie.be/sites/default/files/styles/frontpage_image/public/2021-03/tree-nature-forest-wilderness-branch-plant-99255-pxhere.com_.jpg?itok=e2MXl_E2"
+              class="card-img-top"
+              alt="Image 3"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <strong>Climate Action</strong>
+              </h5>
+              <p class="card-text">
+                <small
+                  >Recycling reduces greenhouse gas emissions, and promoting
+                  sustainability.</small
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Footer Section -->
+  <footer class="footer bg-light mt-auto py-3">
+    <div class="container text-center">
+      <span class="text-muted"
+        ><strong>Made with </strong>🧠<br />
+        <small>by Dishant, Chetna And Yash</small></span
+      >
+    </div>
+  </footer>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</html>
