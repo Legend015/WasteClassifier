@@ -6,9 +6,9 @@ from main import getPrediction
 UPLOAD_FOLDER = 'static/input_img'
 
 if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)  # Create 'static/' if it doesn't exist
+    os.makedirs(UPLOAD_FOLDER)
 
-app = Flask(__name__)                    
+app = Flask(__name__)
 app.secret_key = '8662747133'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -23,19 +23,17 @@ def submit_image():
         return redirect(request.url)
     
     file = request.files['file']
-
     if file.filename == '':
         flash('No file selected for uploading')
         return redirect(request.url)
     
     if file:
         filename = secure_filename(file.filename)
-        file_path = os.path.join(UPLOAD_FOLDER, filename)  # Use correct path
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        
         answer, probability_results, filename = getPrediction(filename)
         flash(answer)
-        flash(probability_results)
+        flash(str(probability_results))
         flash(filename)
         return redirect('/')
 

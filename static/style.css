@@ -1,50 +1,82 @@
-.card-group .card-img-top {
-    width: 100%; /* or any size you want */
-    height: 200px; /* or any size you want */
-    object-fit: cover;
-  }
-  
-  body {
-    font-family: "Roboto", sans-serif;
-    background: linear-gradient(to bottom right, #272822, #383830);
-    color: whitesmoke;
-  }
-  
-  h1.display-5 {
-    font-family: "Bangers";
-    font-weight: 400; /* Extra Bold */
-    text-shadow: 4px 4px 4px rgba(0.5, 0.5, 0.5, 0.5); /* add drop shadow to text */
-  }
-  
-  @font-face {
-    font-family: "Mona Sans";
-    src: url("Mona-Sans.woff2") format("woff2 supports variations"),
-      url("Mona-Sans.woff2") format("woff2-variations");
-    font-weight: 200 900;
-    font-stretch: 75% 125%;
-  }
-  
-  .card {
-    background-color: #333530;
-  }
-  
-  .navbar,
-  .footer {
-    background-color: #272822 !important;
-    color: white !important;
-  }
-  
-  .navbar *,
-  .footer * {
-    color: white !important;
-  }
-  
-  .submit-btn {
-    background-color: #272822; /* change this to your desired color */
-    color: white; /* change this to your desired text color */
-  }
-  
-  .container * {
-    color: white;
-  }
-  
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/static/fonts/Mona-Sans.woff2") format("woff2");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+body.dark-theme {
+  font-family: "Roboto Mono", sans-serif;
+  background: linear-gradient(to bottom right, #1a202c, #2d3748);
+  color: whitesmoke;
+}
+
+body.light-theme {
+  font-family: "Roboto Mono", sans-serif;
+  background: linear-gradient(to bottom right, #edf2f7, #e2e8f0);
+  color: #2d3748;
+}
+
+.font-bangers {
+  font-family: "Bangers", cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  max-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item img {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.animate__animated {
+  animation-duration: 1s;
+}
+
+body.light-theme .animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
