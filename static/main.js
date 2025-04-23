@@ -135,30 +135,30 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // Fetch Blogs via NewsAPI
-  fetch('https://newsapi.org/v2/everything?q=environmental+safety&apiKey=c9a89e95937543fc95d3b60851f52630')
-    .then(response => response.json())
-    .then(data => {
-      const carouselContent = document.getElementById('carousel-content');
-      if (carouselContent) {
-        data.articles.slice(0, 5).forEach((article, index) => {
-          const item = document.createElement('div');
-          item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
-          item.innerHTML = `
-            <div class="flex justify-center">
-              <div class="max-w-md">
-                <img src="${article.urlToImage || 'https://via.placeholder.com/800x300'}" class="d-block w-full h-48 object-cover rounded-lg" alt="${article.title}">
-                <div class="carousel-caption p-4">
-                  <h5 class="text-lg font-semibold">${article.title}</h5>
-                  <p class="text-sm">${article.description || 'No description available.'}</p>
-                  <a href="${article.url}" target="_blank" class="btn btn-primary btn-sm">Read More</a>
-                </div>
-              </div>
-            </div>
-          `;
-          carouselContent.appendChild(item);
-        });
-      }
-    })
-    .catch(error => console.error('Error fetching blogs:', error));
+  // // Fetch Blogs via NewsAPI
+  // fetch('https://newsapi.org/v2/everything?q=environmental+safety&apiKey=c9a89e95937543fc95d3b60851f52630')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     const carouselContent = document.getElementById('carousel-content');
+  //     if (carouselContent) {
+  //       data.articles.slice(0, 5).forEach((article, index) => {
+  //         const item = document.createElement('div');
+  //         item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+  //         item.innerHTML = `
+  //           <div class="flex justify-center">
+  //             <div class="max-w-md">
+  //               <img src="${article.urlToImage || 'https://via.placeholder.com/800x300'}" class="d-block w-full h-48 object-cover rounded-lg" alt="${article.title}">
+  //               <div class="carousel-caption p-4">
+  //                 <h5 class="text-lg font-semibold">${article.title}</h5>
+  //                 <p class="text-sm">${article.description || 'No description available.'}</p>
+  //                 <a href="${article.url}" target="_blank" class="btn btn-primary btn-sm">Read More</a>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         `;
+  //         carouselContent.appendChild(item);
+  //       });
+  //     }
+  //   })
+  //   .catch(error => console.error('Error fetching blogs:', error));
 });

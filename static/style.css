@@ -5,23 +5,122 @@
   font-stretch: 75% 125%;
 }
 
+/* Dark Theme */
 body.dark-theme {
   font-family: "Roboto Mono", sans-serif;
   background: linear-gradient(to bottom right, #1a202c, #2d3748);
   color: whitesmoke;
 }
 
+body.dark-theme header,
+body.dark-theme footer,
+body.dark-theme .navbar {
+  background-color: #2d3748;
+  color: whitesmoke;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme a,
+body.dark-theme label,
+body.dark-theme .btn,
+body.dark-theme .text,
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme .navbar-brand,
+body.dark-theme .nav-link {
+  color: whitesmoke !important;
+}
+
+body.dark-theme .btn {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+body.dark-theme a:hover {
+  color: #90cdf4;
+}
+
+body.dark-theme input,
+body.dark-theme textarea {
+  background-color: #2d3748;
+  color: whitesmoke;
+  border: 1px solid #4a5568;
+}
+
+/* Light Theme */
 body.light-theme {
   font-family: "Roboto Mono", sans-serif;
   background: linear-gradient(to bottom right, #edf2f7, #e2e8f0);
   color: #2d3748;
 }
 
+body.light-theme header,
+body.light-theme footer,
+body.light-theme .navbar {
+  background-color: white;
+  color: #2d3748;
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6,
+body.light-theme p,
+body.light-theme span,
+body.light-theme a,
+body.light-theme label,
+body.light-theme .btn,
+body.light-theme .text,
+body.light-theme input,
+body.light-theme textarea,
+body.light-theme .card,
+body.light-theme .navbar-brand,
+body.light-theme .nav-link {
+  color: #2d3748 !important;
+}
+
+body.light-theme .btn {
+  background-color: #e2e8f0;
+  color: #2d3748;
+  border: 1px solid #cbd5e0;
+}
+
+body.light-theme a {
+  color: #2b6cb0;
+}
+
+body.light-theme a:hover {
+  color: #2c5282;
+}
+
+body.light-theme input,
+body.light-theme textarea {
+  background-color: white;
+  color: #2d3748;
+  border: 1px solid #cbd5e0;
+}
+
+/* ========================== */
+/*     FONT CUSTOMIZATION     */
+/* ========================== */
 .font-bangers {
   font-family: "Bangers", cursive;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* ========================== */
+/*        CAROUSEL STYLES     */
+/* ========================== */
 .carousel {
   max-width: 100%;
   overflow: hidden;
@@ -72,6 +171,9 @@ body.light-theme {
   border-radius: 50%;
 }
 
+/* ========================== */
+/*       ANIMATIONS           */
+/* ========================== */
 .animate__animated {
   animation-duration: 1s;
 }
